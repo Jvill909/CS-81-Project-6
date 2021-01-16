@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>CS81 - Assignment 6</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            .error { color: red; }
+            .hidden { display:  none; }
+            .full { width: 100%; }
+            button { 
+                background-color: lightgreen;
+                text-align: center; 
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>Assignment 6</h2>
+            <h3>Instructions</h3>
+            <ul>
+                <li>Copy assignment5.js into the same folder as this HTML page; then rename it to assignment6.js</li>
+                <li>Implement a <code>function registerEventListeners()</code> in which add a listerner to the add button with the id <code>btnAdd</code>
+                </li>
+                <li><b>Input: </b>Create a sandwich or burger based on the selected menu item. Create a regular burger if no cheese is selected but create a cheese burger if cheese is selected. Add the item to a global <code>Order</code> object.</li>
+                <li><b>Output:</b> Show the current order after each click to the "Add to Order" button. 
+                    <ul>
+                        <li>Clear the current output. You may call the <code>clearOutput()</code> function to do so.</li>
+                        <li>Get the <code>&lt;ul&gt;</code> element with the id <code>output</code>.</li>
+                        <li>Add an <code>&lt;li&gt;</code> element with a text node to it by using <code>document.createElement(..)</code> and <code>document.createTextNode(..)</code> functions
+                        </li>
+                        <li>Show the total price of the order by using the price property of the Order object. The id of the label showing the total price is <code>total</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>Sandwich Order</h2>
+            <table>
+                <tr>
+                    <td>
+                        <label>Menu Item: </label>
+                    </td>
+                    <td>
+                        <select id='item' class="full">
+                            <option value="sandwich" selected>Sandwich - $2.99</option>
+                            <option value="burger">Burger - $3.99</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Lettuce</label></td>
+                    <td>
+                        <select id='lettuce' class="full">
+                            <option selected value="ice-berg">Ice-Berg</option>
+                            <option value="romane">Romane</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Meat</label></td>
+                    <td>
+                        <select id='meat' class="full">
+                            <option selected value="beef">Beef</option>
+                            <option value="chicken">Chicken</option>
+                            <option value="veggie">Veggie</option>
+                            <option value="tofu">Tofu</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Cheese - Extra $0.50</label></td>
+                    <td>
+                        <select id='cheese' class="full">
+                            <option value="none" selected>NONE</option>
+                            <option value="american">American</option>
+                            <option value="cheddar">Cheddar</option>
+                            <option value="provolone">Provolone</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="btnAdd">Add to Order</button></td>
+                </tr>
+            </table>
+            <ul id="output"></ul>
+            <label id="total">Total: $ 0.00</label>
+        </div>
+        <script type="text/javascript">
+            function clearOutput() {
+                let output = document.getElementById("output");
+                output.innerHTML = "";
+            }
+            let readyCheck = setInterval(() => {
+                if (document.readyState !== 'complete') {
+                    return;
+                }
+                clearInterval(readyCheck);
+                onDocumentLoaded();
+            }, 200);
+            function onDocumentLoaded() {
+                registerEventListeners();
+            }
+        </script>
+        <script src="assignment6.js"></script>
+    </body>
+</html>
